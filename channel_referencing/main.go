@@ -4,6 +4,7 @@ import (
 	"log"
 	"time"
 	"sync"
+	"fmt"
 )
 
 func closeAndSwitchChannel()  {
@@ -46,6 +47,25 @@ func closeAndSwitchChannel()  {
 	time.Sleep(3 * time.Second)
 }
 
+func closedChannel()  {
+	chan1 := make(chan string, 100)
+	chan1<-"1"
+
+	go func() {
+		for {
+			msg, ok := <-chan1
+			fmt.Printf("msg: %v, ok: %v", msg, ok)
+			time.Sleep(100 * time.Millisecond)
+		}
+	}()
+
+	time.Sleep(1 * time.Second)
+
+	close(chan1)
+
+	time.Sleep(1 * time.Second)
+}
+
 func switchChannel()  {
 	chan1 := make(chan string, 100)
 	chan1<-"1"
@@ -85,6 +105,63 @@ func channelBlocking()  {
 	chan1 <- true
 }
 
+func evaluateCondition()  {
+	lock := sync.Mutex{}
+
+	cond := sync.NewCond(&lock)
+
+	lock.Lock()
+
+	go func() {
+		cond.Wait()
+
+		log.Print("Hi")
+	}()
+
+	time.Sleep(2 * time.Second)
+
+	lock.Unlock()
+}
+
+func reuseWaitGroup()  {
+	wg := sync.WaitGroup{}
+
+	go func() {
+		for {
+			wg.Wait()
+
+			log.Print("la")
+
+			time.Sleep(200 * time.Millisecond)
+		}
+
+	}()
+
+	time.Sleep(1 * time.Second)
+
+	wg.Add(1)
+
+	time.Sleep(1 * time.Second)
+
+	wg.Done()
+
+	time.Sleep(1 * time.Second)
+
+	wg.Add(1)
+
+	time.Sleep(1 * time.Second)
+
+	wg.Done()
+
+	time.Sleep(1 * time.Second)
+
+	wg.Add(1)
+
+	time.Sleep(1 * time.Second)
+
+	wg.Done()
+}
+
 func main() {
-	channelBlocking()
+	closedChannel()
 }
