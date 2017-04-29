@@ -1,7 +1,7 @@
 package main
 
 import (
-	"k8s.io/contrib/compare/Godeps/_workspace/src/github.com/emicklei/go-restful/log"
+	"log"
 	"time"
 )
 
