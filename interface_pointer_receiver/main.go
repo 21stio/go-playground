@@ -20,6 +20,8 @@ func main() {
 	lion := Lion{}
 
 	letItLive(lion)
+	letItLive(lion)
+	letItLive(lion)
 
 	print(lion.breathCount)
 }
