@@ -1,8 +1,12 @@
-hash: 921392e00c345588b790ed5b93e1697af55c7aa31381d56f958dba8bb5a271b2
-updated: 2017-03-07T13:00:16.180377651+01:00
+hash: e35b60fc94c542e36768a76953434058699df9d2b3e79263eea6d961226c58f1
+updated: 2017-08-09T16:48:52.242103976+02:00
 imports:
 - name: github.com/ghodss/yaml
   version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
+- name: golang.org/x/net
+  version: f2499483f923065a842d38eb4c7f1927e6fc6e6d
+  subpackages:
+  - internal/timeseries
 - name: gopkg.in/yaml.v2
   version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
 testImports: []

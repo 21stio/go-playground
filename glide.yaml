@@ -1,3 +1,6 @@
 package: github.com/21stio/go-playground
 import:
 - package: github.com/ghodss/yaml
+- package: golang.org/x/net
+  subpackages:
+  - internal/timeseries
