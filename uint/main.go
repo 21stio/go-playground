@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main()  {
-	run()
+	testNegativeIntToUint()
 }
 
 func run() {
@@ -11,4 +11,11 @@ func run() {
 	b := uint64(500)
 
 	fmt.Printf("%v", b - a)
+}
+
+func testNegativeIntToUint() {
+	a := int64(-1000)
+	b := uint64(a)
+
+	fmt.Printf("%v", b)
 }
