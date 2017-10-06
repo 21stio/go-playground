@@ -1,5 +1,5 @@
-hash: c91a07f182faf23fda7622d3d16218ddb90f6ecd26eeaa111d9f9dbcb1c0de10
-updated: 2017-09-29T21:11:59.354963403+02:00
+hash: d0da516e90560461496e7bdf1b172e1befe4c3bbe917587bb7f0a2b35c4137e6
+updated: 2017-10-05T17:06:32.1446114+02:00
 imports:
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
@@ -9,16 +9,12 @@ imports:
   version: 3c4937480c32f4c13a875a1829af76c98ca3d40a
 - name: go.uber.org/zap
   version: 35aad584952c3e7020db7b839f6b102de6271f89
-  subpackages:
-  - buffer
-  - internal/bufferpool
-  - internal/color
-  - internal/exit
-  - zapcore
 - name: golang.org/x/net
   version: f2499483f923065a842d38eb4c7f1927e6fc6e6d
   subpackages:
   - internal/timeseries
-- name: gopkg.in/yaml.v2
-  version: eb3733d160e74a9c7e442f435eb3bea458e1d19f
+- name: google.golang.org/appengine
+  version: 150dc57a1b433e64154302bdc40b6bb8aefa313a
+  subpackages:
+  - datastore
 testImports: []

@@ -32,9 +32,13 @@ func testProxy() error {
 
 func testSocks5() error {
 	auth := proxy.Auth{}
-	auth.User = "x6786021"
-	auth.Password = "uxHQ5oYKQZ"
-	proxyAddress := "proxy-nl.privateinternetaccess.com:1080"
+	//auth.User = "x6786021"
+	//auth.Password = "ePoJgeNSuR"
+	//proxyAddress := "proxy-nl.privateinternetaccess.com:1080"
+
+	auth.User = "pool2"
+	auth.Password = "pass2"
+	proxyAddress := "127.0.0.1:8000"
 
 	dialer, err := proxy.SOCKS5("tcp", proxyAddress, &auth, proxy.Direct)
 	if err != nil {
@@ -48,7 +52,7 @@ func testSocks5() error {
 
 	httpTransport.Dial = dialer.Dial
 
-	req, err := http.NewRequest("GET", "http://httpbin.org/anything", nil)
+	req, err := http.NewRequest("GET", "https://httpbin.org/anything", nil)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "can't create request:", err)
 
