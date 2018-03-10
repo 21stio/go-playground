@@ -14,3 +14,20 @@ import:
   version: ^1.0.0
   subpackages:
   - datastore
+- package: github.com/shirou/gopsutil
+  version: ^2.17.9
+- package: github.com/cbednarski/hostess
+  version: ^0.2.1
+  subpackages:
+  - cmd/hostess
+- package: github.com/faiface/beep
+- package: github.com/hajimehoshi/oto
+- package: github.com/tockins/interact
+  version: ^1.1.0
+- package: github.com/abiosoft/ishell
+  version: ^1.0.0
+- package: github.com/AlecAivazis/survey
+  version: ^1.4.0
+- package: gopkg.in/AlecAivazis/survey.v1
+  version: ^1.4.0
+- package: github.com/olebedev/emitter

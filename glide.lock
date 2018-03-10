@@ -1,20 +1,75 @@
-hash: d0da516e90560461496e7bdf1b172e1befe4c3bbe917587bb7f0a2b35c4137e6
-updated: 2017-10-05T17:06:32.1446114+02:00
+hash: 50fdf2cea27b4fc34bd020ff3cfaffebd0a3d9d5d117c6003807eedac1c0d529
+updated: 2018-01-01T11:50:55.623958802+01:00
 imports:
+- name: github.com/abiosoft/ishell
+  version: a7612be24192ddf96ba5f1fd5654d2e96a7553c7
+- name: github.com/AlecAivazis/survey
+  version: 0aa8b6a162b391fe2d95648b7677d1d6ac2090a6
+- name: github.com/cbednarski/hostess
+  version: cda520eb5f021bee082fd52f3d356daf639de68d
+  subpackages:
+  - cmd/hostess
+- name: github.com/codegangsta/cli
+  version: 39908eb08fee7c10d842622a114a5c133fb0a3c6
+- name: github.com/faiface/beep
+  version: 9a0b4386297ca3f9d0ed1735be9efe03a6dd9e7c
+  subpackages:
+  - speaker
+  - wav
 - name: github.com/ghodss/yaml
   version: 0ca9ea5df5451ffdf184b4428c902747c2c11cd7
+- name: github.com/gopherjs/gopherjs
+  version: 444abdf920945de5d4a977b572bcc6c674d1e4eb
+  subpackages:
+  - js
+- name: github.com/hajimehoshi/oto
+  version: 3680d211ad669453474fc5622a8cc4d346accedb
+  subpackages:
+  - internal/jni
+- name: github.com/mattn/go-colorable
+  version: 586e6dcca296d085100876beb6dbf02287a247f7
+- name: github.com/mattn/go-isatty
+  version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
+- name: github.com/mgutz/ansi
+  version: 9520e82c474b0a04dd04f8a40959027271bab992
+- name: github.com/olebedev/emitter
+  version: 68bb25b251f61cde3824cc316f238f0da1704331
+- name: github.com/pkg/errors
+  version: e881fd58d78e04cf6d0de1217f8707c8cc2249bc
+- name: github.com/shirou/gopsutil
+  version: 7ec06ec280df1dd1f08befc535049d49d63ae18a
+- name: github.com/tockins/interact
+  version: f8fb5795b5d713c41dab6771ffe1fdfdfd0c3285
 - name: go.uber.org/atomic
-  version: 4e336646b2ef9fc6e47be8e21594178f98e5ebcf
+  version: 8474b86a5a6f79c443ce4b2992817ff32cf208b8
 - name: go.uber.org/multierr
   version: 3c4937480c32f4c13a875a1829af76c98ca3d40a
 - name: go.uber.org/zap
   version: 35aad584952c3e7020db7b839f6b102de6271f89
+  subpackages:
+  - buffer
+  - internal/bufferpool
+  - internal/color
+  - internal/exit
+  - zapcore
 - name: golang.org/x/net
-  version: f2499483f923065a842d38eb4c7f1927e6fc6e6d
+  version: d866cfc389cec985d6fda2859936a575a55a3ab6
   subpackages:
   - internal/timeseries
+  - proxy
+- name: golang.org/x/sys
+  version: 83801418e1b59fb1880e363299581ee543af32ca
+  subpackages:
+  - unix
 - name: google.golang.org/appengine
   version: 150dc57a1b433e64154302bdc40b6bb8aefa313a
   subpackages:
   - datastore
+- name: gopkg.in/AlecAivazis/survey.v1
+  version: 0aa8b6a162b391fe2d95648b7677d1d6ac2090a6
+  subpackages:
+  - core
+  - terminal
+- name: gopkg.in/yaml.v2
+  version: 287cf08546ab5e7e37d55a84f7ed3fd1db036de5
 testImports: []
