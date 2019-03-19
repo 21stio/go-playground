@@ -1,0 +1,17 @@
+- template: .make/gotpl/type.gotpl
+  what: types
+  typeFlagsNotOr: [hasCircularCluster, isInCircularCluster]
+  iterate: true
+  outTpl: "schema/{{ lower .RenderContext.Type.Name }}/{{ lower .RenderContext.Type.Name }}_.proto"
+
+#- template: .make/gotpl/circulars.gotpl
+#  what: types
+#  typeFlagsOr: [hasCircularDependencies]
+#  iterate: true
+#  outTpl: "schema/circular/{{ lower .RenderContext.Type.Name }}_.proto"
+
+- template: .make/gotpl/circular.gotpl
+  what: types
+  typeFlagsOr: [hasCircularCluster]
+  iterate: true
+  outTpl: "schema/{{ lower .RenderContext.Type.Name }}/{{ lower .RenderContext.Type.Name }}_.proto"

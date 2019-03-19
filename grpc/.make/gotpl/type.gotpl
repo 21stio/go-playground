@@ -1,0 +1,84 @@
+{{- $type := .Type -}}
+syntax = "proto2";
+
+option go_package = "github.com/21stio/go-playground/grpc/schema/{{ lower $type.Name }}";
+package {{ lower $type.Name }};
+{{ range $i, $dependency := $type.Dependencies.RemoveDuplicateCircularClusters }}
+{{- if or ($dependency.IsObject) ($dependency.IsEnum) }}
+{{- if ($dependency.Flags.Is "isInCircularCluster" true) }}
+import "{{ lower ($dependency.Data.Get "circularClusterName") }}/{{ lower ($dependency.Data.Get "circularClusterName") }}_.proto";
+{{- end }}
+{{- if ($dependency.Flags.Is "isInCircularCluster" false) }}
+import "{{ lower $dependency.Name }}/{{ lower $dependency.Name }}_.proto";
+{{- end }}
+{{- end }}
+{{- end }}
+{{ if $type.IsObject }}
+message {{ $type.Name }} {
+{{- range $fi, $field :=$type.Fields }}
+{{- if $field.IsBoolean }}
+    optional bool {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsFloat }}
+    optional double {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsString }}
+    optional string {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsInt }}
+    optional int32 {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsObject }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" true) }}
+    optional {{ lower ($field.Type.Data.Get "circularClusterName") }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" false) }}
+    optional {{ lower $field.Type.Name }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- end }}
+{{- if $field.IsEnum }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" true) }}
+    optional {{ lower ($field.Type.Data.Get "circularClusterName") }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" false) }}
+    optional {{ lower $field.Type.Name }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- end }}
+{{- if $field.IsStringList }}
+    repeated string {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsIntList }}
+    repeated int32 {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsFloatList }}
+    repeated double {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsBooleanList }}
+    repeated bool {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if $field.IsObjectList }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" true) }}
+    repeated {{ lower ($field.Type.Data.Get "circularClusterName") }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" false) }}
+    repeated {{ lower $field.Type.Name }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- end }}
+{{- if $field.IsEnumList }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" true) }}
+    repeated {{ lower ($field.Type.Data.Get "circularClusterName") }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- if ($field.Type.Flags.Is "isInCircularCluster" false) }}
+    repeated {{ lower $field.Type.Name }}.{{ $field.Type.Name }} {{ $field.Name }} = {{ add $fi 1 }};
+{{- end }}
+{{- end }}
+{{- end }}
+}
+{{- end }}
+{{- if $type.IsEnum }}
+enum {{ $type.Name }} {
+{{- range $vi, $value := $type.Values }}
+    {{ $value }} = {{ $vi }};
+{{- end }}
+}
+{{- end }}
