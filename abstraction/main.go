@@ -1,53 +1,38 @@
 package main
 
-type IBaseRepository interface {
-	GetModels() ([]BaseModel)
-}
+import "github.com/davecgh/go-spew/spew"
 
-type BaseModel struct {
+type Field struct {
 	Name string
 }
 
-type PetRepository struct {
+func (f Field) GetName() (string) {
+	return f.Name
 }
 
-func (repository PetRepository) GetModels() ([]BaseModel)  {
-	return []PetModel{
-		PetModel{
-			Name: "Carl",
-		},
-		PetModel{
-			Name: "Fritz",
-		},
-		PetModel{
-			Name: "Peter",
-		},
-	}
-}
-
-type PetModel struct {
-	BaseModel
+type Whatever struct {
+	Field
 	Name string
 }
 
-func (model PetModel) GetName() (string)  {
-	return "chris"
+
+type Lala []string
+
+func (l *Lala) Append(ss []string) {
+	l0 := append(*l, ss...)
+	l = &l0
 }
 
-func PrintNames(repository IBaseRepository) () {
-	for _, model := range repository.GetModels() {
-		print(model.GetName())
-	}
-}
+type LoLo map[string]string
 
-func PrintName(model BaseModel) () {
-	print(model.GetName())
+func (l LoLo) Append(k, v string) {
+	l[k] = v
 }
 
 func main() {
-	abc := PetModel{
-		Name: "Karl",
-	}
+	l := LoLo{}
 
-	PrintName(abc)
+	l.Append("a", "b")
+
+	spew.Dump(l)
 }
