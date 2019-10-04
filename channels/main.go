@@ -1,9 +1,8 @@
 package main
 
 import (
-	"math/rand"
-	"time"
 	"strconv"
+	"time"
 )
 
 
@@ -28,14 +27,14 @@ func produce(messages chan string) {
 
 func consume(messages chan string){
 	for i := 0; i < 10; i++ {
-		go func() {
-			id := strconv.Itoa(rand.Intn(100))
+		go func(i int) {
+			id := strconv.Itoa(i)
 			println("started worker: " + id + ", waiting for messages")
 
 			for message := range messages {
 				time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 				println("worker: " + string(id) + "   message: " + message)
 			}
-		}()
+		}(i)
 	}
 }
